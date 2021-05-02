@@ -1,0 +1,66 @@
+.terminal {
+    width: 600px;
+    height: 400px;
+    background-color: rgb(14, 6, 51);
+    z-index: 2;
+  }
+  
+  .terminal-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 25px;
+  }
+  
+  .header-p {
+    color: black;
+  }
+  
+  .quest-p {
+    color: rgb(201, 214, 12);
+  }
+  
+  .flex {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+  }
+  
+  .loading {
+    text-align: center;
+    margin-top: 485px;
+  }
+  
+  .loaddiv {
+    padding-top: 10px;
+  }
+  
+  input {
+    background-color: rgb(14, 6, 51);
+    text-decoration: none;
+    outline: none;
+    color: white;
+    border: none;
+    display: inline;
+    margin-left: 5px;
+    width: 500px;
+    font-size: 15px;
+  }
+  
+  .inline-block {
+    display: inline;
+  }
+  
+  .input-field {
+    padding: 5px;
+  }
+  
+  .inputdiv {
+    margin-top: 10px;
+  }
+  
+  span {
+    color: green;
+  }
