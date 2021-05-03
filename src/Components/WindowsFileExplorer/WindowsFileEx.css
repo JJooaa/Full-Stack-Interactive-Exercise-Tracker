@@ -4,8 +4,7 @@
     background-color: whitesmoke;
     box-sizing: border-box;
     border: 2px solid black;
-    border-radius: 7px;
-    margin: 0 auto;
+    display: inline-block;
 }
 
 .wfe-header {
@@ -48,6 +47,7 @@
 
 .sidebar-p {
     color: black;
+    
 }
 
 .sidebar-p:hover {

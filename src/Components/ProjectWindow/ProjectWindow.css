@@ -1,0 +1,32 @@
+.project-window-container {
+    height: 700px;
+    width: 1200px;
+    background: rgb(161, 159, 159);
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.project-header {
+    height: 30px;
+    width: 100%;
+    background-color: rgb(114, 114, 114);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+}
+
+.close-project {
+    width: 35px;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-project:hover {
+    background-color: red;
+}

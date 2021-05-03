@@ -3,6 +3,20 @@
     height: 400px;
     background-color: rgb(14, 6, 51);
     z-index: 2;
+    display: inline-block;
+    border: 1px solid black;
+  }
+
+  .close-terminal {
+    margin: 0 auto;
+    width: 30px;
+    height: auto;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .close-terminal:hover {
+    background-color: red;
   }
   
   .terminal-header {
@@ -24,7 +38,6 @@
   
   .flex {
     display: flex;
-    width: 150px;
     justify-content: space-between;
   }
   

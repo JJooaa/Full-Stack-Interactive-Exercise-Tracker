@@ -1,0 +1,40 @@
+.footer {
+    height: 55px;
+    background-color: gainsboro;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    border-top: 2px solid black;
+    overflow: hidden;
+}
+
+.windows-explore {
+    height: 100%;
+    width: 13%;
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+    justify-content: center;
+    border-right: 2px solid black;
+    cursor: pointer;
+}
+
+.windows-explore:hover {
+    background-color:grey; 
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.start-p {
+    padding-right: 30%;
+    padding-left: 20%;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+}

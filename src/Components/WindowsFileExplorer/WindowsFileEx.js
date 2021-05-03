@@ -20,7 +20,7 @@ const WindowsFileEx = (props) => {
                         </header>
                         <div className="flex-container">
                             <div className="sidebar">
-                                <p className="sidebar-p">This PC</p>
+                                <p className="sidebar-p"> This PC</p>
                                 <p className="sidebar-p"> Documents</p>
                                 <p className="sidebar-p"> Downloads</p>
                                 <p className="sidebar-p"> Music</p>
@@ -28,7 +28,11 @@ const WindowsFileEx = (props) => {
                                 <p className="sidebar-p"> Local Disk (C:)</p>
                             </div>
                             <div className="folders-container">
-                                <ExeIcon />
+                                <ExeIcon
+                                    setTerminalDisplay={
+                                        props.setTerminalDisplay
+                                    }
+                                />
                             </div>
                         </div>
                     </div>

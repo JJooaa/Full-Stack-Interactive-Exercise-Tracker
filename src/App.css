@@ -2,16 +2,30 @@ p {
   margin: 0;
 }
 
+.App {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+
 /* IS THE CONTAINER FOR THE WHOLE WORKING SCREEN */ 
 .main {
-  height: 969px;
+  height: 100%;
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-image: url("https://cdn.wallpapersafari.com/10/32/6RGWFa.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: rgb(98, 124, 131);
 }
 
+.loading {
+  margin: 0;
+  color: white;
+}
+
+
+/*background-image: url(");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
 

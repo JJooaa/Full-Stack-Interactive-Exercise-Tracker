@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import Draggable from "react-draggable";
 import "./Terminal.css";
 
-const Terminal = () => {
+const Terminal = (props) => {
     // OPENS TERMINAL, LOADS DATA
     const [firstStep, setFirstStep] = useState(false);
     // AFTER INSTALLATION IN TERMINAL
     const [secondStep, setSecondStep] = useState(false);
-    // IF TERMINAL SHOWS OR NOT
-    const [terminalDisplay, setTerminalDisplay] = useState(false);
-    // STATE TO KEEP TRACK OF TYPING IN TERMINAL
-    const [input, setInput] = useState("");
 
     // CALLED INSIDE TERMINAL
     const loadFirstData = () => {
@@ -51,17 +47,34 @@ const Terminal = () => {
         }
     };
 
+    // RENDERS THE PROJECT WINDOW BY SETTINGS ITS STATE TO TRUE
+    const renderProjectDisplay = () => {
+        setTimeout(() => {
+            props.setProjectDisplay(true);
+        }, 1000);
+    };
+
+    // CALLED WHEN CLOSING TERMINAL
+    const refreshTerminalState = () => {
+        setFirstStep(false);
+        setSecondStep(false);
+    };
+
     const renderTerminal = () => {
-        if (terminalDisplay === true) {
+        if (props.terminalDisplay === true) {
             return (
-                <Draggable>
+                <Draggable handle="#handle">
                     <div className="terminal">
-                        <header className="terminal-header">
+                        <header className="terminal-header" id="handle">
                             <p className="header-p">MINGW64:/c/Users/Guest</p>
                             <div className="flex">
-                                <div>ASD</div>
-                                <div>ASD</div>
-                                <div onClick={() => setTerminalDisplay(false)}>
+                                <div
+                                    className="close-terminal"
+                                    onClick={() => {
+                                        props.setTerminalDisplay(false);
+                                        refreshTerminalState();
+                                    }}
+                                >
                                     X
                                 </div>
                             </div>
@@ -75,6 +88,7 @@ const Terminal = () => {
                             {loadFirstData()}
                             {/*STEP 2 */}
                             {loadSecondData()}
+                            {renderProjectDisplay()}
                         </div>
                     </div>
                 </Draggable>
@@ -82,11 +96,7 @@ const Terminal = () => {
         }
     };
 
-    return (
-        <>
-            {renderTerminal()}
-        </>
-    );
+    return <>{renderTerminal()}</>;
 };
 
 export default Terminal;
