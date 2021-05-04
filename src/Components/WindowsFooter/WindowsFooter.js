@@ -2,13 +2,12 @@ import React from "react";
 import "./WindowsFooter.css";
 import windowsIcon from "../Images/windows-icon.png";
 
-const WindowsFooter = () => {
+const WindowsFooter = (props) => {
     return (
         <>
             <div className="footer">
-                <div className="windows-explore">
+                <div className="windows-explore" onClick={() => props.setStartWindow(true)}>
                     <img className="logo" src={windowsIcon} />
-                    <p className="start-p">Start</p>
                 </div>
             </div>
         </>

@@ -5,6 +5,9 @@
     box-sizing: border-box;
     border: 2px solid black;
     display: inline-block;
+    position: absolute;
+    left: 25%;
+    top: 20%;
 }
 
 .wfe-header {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Draggable from "react-draggable";
 import "./Terminal.css";
 
@@ -7,6 +7,8 @@ const Terminal = (props) => {
     const [firstStep, setFirstStep] = useState(false);
     // AFTER INSTALLATION IN TERMINAL
     const [secondStep, setSecondStep] = useState(false);
+
+    const [className, setClassName] = useState("terminal");
 
     // CALLED INSIDE TERMINAL
     const loadFirstData = () => {
@@ -28,30 +30,23 @@ const Terminal = (props) => {
     // CALLED INSIDE TERMINAL
     const loadSecondData = () => {
         if (secondStep === true) {
+            setTimeout(() => {
+                props.setProjectDisplay(true);
+                props.setTerminalDisplay(false);
+                refreshTerminalState();
+            }, 2000);
             return (
                 <div className="inputdiv">
                     <p>
                         <span>Compiled successfully!</span> Setup finished in
                         [2500ms]...
                     </p>
-                    <p>
-                        Typing "project2" launches application in new window...
-                    </p>
-                    <p>
-                        Typing "project2" launches application in new window...
-                    </p>
+                    <p>Loading project in a new window...</p>
                     <p className="inline-block">$</p>
                     <input spellCheck="false"></input>
                 </div>
             );
         }
-    };
-
-    // RENDERS THE PROJECT WINDOW BY SETTINGS ITS STATE TO TRUE
-    const renderProjectDisplay = () => {
-        setTimeout(() => {
-            props.setProjectDisplay(true);
-        }, 1000);
     };
 
     // CALLED WHEN CLOSING TERMINAL
@@ -63,7 +58,7 @@ const Terminal = (props) => {
     const renderTerminal = () => {
         if (props.terminalDisplay === true) {
             return (
-                <Draggable handle="#handle">
+                <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
                     <div className="terminal">
                         <header className="terminal-header" id="handle">
                             <p className="header-p">MINGW64:/c/Users/Guest</p>
@@ -88,7 +83,6 @@ const Terminal = (props) => {
                             {loadFirstData()}
                             {/*STEP 2 */}
                             {loadSecondData()}
-                            {renderProjectDisplay()}
                         </div>
                     </div>
                 </Draggable>

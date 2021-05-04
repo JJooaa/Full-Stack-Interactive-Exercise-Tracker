@@ -1,0 +1,11 @@
+.startwindow-container {
+    height: 500px;
+    width: 300px;
+    background-color: gray;
+    position: absolute;
+    bottom: 6.1%;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    opacity: 92%;
+ 
+}

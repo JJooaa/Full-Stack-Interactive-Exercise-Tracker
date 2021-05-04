@@ -1,9 +1,13 @@
 .project-window-container {
     height: 700px;
     width: 1200px;
-    background: rgb(161, 159, 159);
+    background: gainsboro;
     border: 1px solid black;
     display: inline-block;
+    position: absolute;
+    z-index: 3;
+    top: 10%;
+    right: 17%;
 }
 
 .project-header {

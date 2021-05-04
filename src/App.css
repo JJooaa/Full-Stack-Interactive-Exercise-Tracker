@@ -16,12 +16,46 @@ p {
   align-items: center;
   justify-content: center;
   background-color: rgb(98, 124, 131);
+  background-image: url("https://wallpapercave.com/wp/wp2754862.jpg");
+  background-size: cover;
+  position: relative;
 }
 
 .loading {
   margin: 0;
-  color: white;
+  color: ghostwhite;
+  font-size: 26px;
 }
+
+.loading-screen {
+  display: flex;
+  height: 100%;
+  position: relative;
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 250px;
+  height: 25px;
+  background-color: white;
+  animation: width 2s linear;
+}
+
+@keyframes width {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 250px;
+  }
+} 
+
+
+
 
 
 /*background-image: url(");

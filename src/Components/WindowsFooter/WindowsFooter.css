@@ -1,6 +1,6 @@
 .footer {
     height: 55px;
-    background-color: gainsboro;
+    background-color: rgb(42, 91, 197);
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -8,15 +8,15 @@
     box-sizing: border-box;
     border-top: 2px solid black;
     overflow: hidden;
+    z-index: 100;
 }
 
 .windows-explore {
     height: 100%;
-    width: 13%;
+    width: 300px;
     background-color: gainsboro;
     display: flex;
     align-items: center;
-    padding: 0px 20px 0px 20px;
     justify-content: center;
     border-right: 2px solid black;
     cursor: pointer;

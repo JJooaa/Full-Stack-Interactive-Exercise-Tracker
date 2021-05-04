@@ -8,7 +8,7 @@ const ProjectWindow = (props) => {
         if (props.projectDisplay === true) {
             return (
                 <>
-                    <Draggable handle="#handle">
+                    <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
                         <div className="project-window-container">
                             <div className="project-header" id="handle">
                                 <p>Project 1</p>

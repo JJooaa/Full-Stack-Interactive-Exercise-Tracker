@@ -2,9 +2,12 @@
     width: 600px;
     height: 400px;
     background-color: rgb(14, 6, 51);
-    z-index: 2;
     display: inline-block;
     border: 1px solid black;
+    position: absolute;
+    z-index: 3;
+    top: 25%;
+    right: 25%;
   }
 
   .close-terminal {
@@ -77,3 +80,4 @@
   span {
     color: green;
   }
+

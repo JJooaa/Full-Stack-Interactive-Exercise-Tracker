@@ -7,7 +7,7 @@ const WindowsFileEx = (props) => {
     const renderComponent = () => {
         if (props.displayWfe === true) {
             return (
-                <Draggable handle="#handle">
+                <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
                     <div className="wfe-container">
                         <header className="wfe-header" id="handle">
                             <p className="wfe-p">File Explorer</p>
