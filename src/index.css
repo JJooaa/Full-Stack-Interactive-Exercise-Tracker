@@ -16,7 +16,7 @@ body {
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 90%);
-  border: 2px solid black;
+  border: 1px solid rgb(44, 44, 44);
 }
 
 #root {

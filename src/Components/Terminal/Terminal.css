@@ -1,60 +1,60 @@
 .terminal {
     width: 600px;
     height: 400px;
-    background-color: rgb(14, 6, 51);
+    background-color: rgb(19, 18, 18);
     display: inline-block;
     border: 1px solid black;
     position: absolute;
     z-index: 3;
     top: 25%;
     right: 25%;
-  }
+}
 
-  .close-terminal {
+.close-terminal {
     margin: 0 auto;
     width: 30px;
     height: auto;
     text-align: center;
     cursor: pointer;
-  }
+}
 
-  .close-terminal:hover {
+.close-terminal:hover {
     background-color: red;
-  }
-  
-  .terminal-header {
+}
+
+.terminal-header {
     display: flex;
     justify-content: space-between;
     background-color: white;
     padding-left: 10px;
     padding-right: 10px;
     height: 25px;
-  }
-  
-  .header-p {
+}
+
+.header-p {
     color: black;
-  }
-  
-  .quest-p {
+}
+
+.quest-p {
     color: rgb(201, 214, 12);
-  }
-  
-  .flex {
+}
+
+.flex {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .loading {
+}
+
+.loading {
     text-align: center;
     margin-top: 485px;
-  }
-  
-  .loaddiv {
+}
+
+.loaddiv {
     padding-top: 10px;
-  }
-  
-  input {
-    background-color: rgb(14, 6, 51);
+}
+
+input {
+    background-color: rgb(19, 18, 18);
     text-decoration: none;
     outline: none;
     color: white;
@@ -63,21 +63,72 @@
     margin-left: 5px;
     width: 500px;
     font-size: 15px;
-  }
-  
-  .inline-block {
-    display: inline;
-  }
-  
-  .input-field {
-    padding: 5px;
-  }
-  
-  .inputdiv {
-    margin-top: 10px;
-  }
-  
-  span {
-    color: green;
-  }
+}
 
+.inline-block {
+    display: inline;
+}
+
+.input-field {
+    padding: 5px;
+}
+
+.inputdiv {
+    margin-top: 10px;
+}
+
+span {
+    color: green;
+}
+
+.loader {
+    animation-name: writeText;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    width: 0px;
+    margin: 0px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.delay-0 {
+  animation-delay: 0ms;
+}
+
+.delay-1 {
+  animation-delay: 1500ms;
+}
+
+.delay-2 {
+  animation-delay: 1750ms;
+}
+
+.delay-3 {
+  animation-delay: 2000ms;
+}
+
+.delay-4 {
+  animation-delay: 2250ms;
+}
+
+.delay-5 {
+  animation-delay: 2500ms;
+  color: green;
+  margin-top: 10px;
+}
+
+.delay-6 {
+    animation-delay: 3000ms;
+    color: yellow;
+    margin-top: 10px;
+}
+
+@keyframes writeText {
+    from {
+        width: 0;
+    }
+    to {
+        width: 400px;
+    }
+}

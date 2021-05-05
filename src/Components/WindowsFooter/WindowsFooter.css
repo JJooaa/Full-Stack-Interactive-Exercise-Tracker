@@ -1,12 +1,12 @@
 .footer {
     height: 55px;
-    background-color: rgb(42, 91, 197);
+    background-color: whitesmoke;
     position: absolute;
     bottom: 0;
     width: 100%;
     display: flex;
     box-sizing: border-box;
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     overflow: hidden;
     z-index: 100;
 }
@@ -14,11 +14,11 @@
 .windows-explore {
     height: 100%;
     width: 300px;
-    background-color: gainsboro;
+    background-color: whitesmoke;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid black;
+    border-right: 1px solid black;
     cursor: pointer;
 }
 

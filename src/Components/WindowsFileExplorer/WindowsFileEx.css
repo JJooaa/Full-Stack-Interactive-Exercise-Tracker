@@ -3,7 +3,7 @@
     height: 500px;
     background-color: whitesmoke;
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 1px solid black;
     display: inline-block;
     position: absolute;
     left: 25%;
@@ -12,7 +12,7 @@
 
 .wfe-header {
     height: 30px;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,7 +40,7 @@
 .sidebar {
     height: 466px;
     width: 150px;
-    border-right: 2px solid black;
+    border-right: 1px solid black;
     display: inline-block;
     overflow: hidden;
     padding: 10px;

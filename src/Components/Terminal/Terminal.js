@@ -1,33 +1,40 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Draggable from "react-draggable";
 import "./Terminal.css";
 
 const Terminal = (props) => {
     // OPENS TERMINAL, LOADS DATA
-    const [firstStep, setFirstStep] = useState(false);
+    const [firstStep, setFirstStep] = useState(true);
     // AFTER INSTALLATION IN TERMINAL
     const [secondStep, setSecondStep] = useState(false);
 
-    const [className, setClassName] = useState("terminal");
+    const terminalDataArray = [
+        "Loading packages from RANDOM DATA://JOA/WEBDEV",
+        "Downloading [05 / 20]...",
+        "Downloading [10 / 20]...",
+        "Downloading [15 / 20]...",
+        "Downloading [20 / 20]...",
+        "Finished Downloading packages",
+        "COMPILING..."
+    ];
 
     // CALLED INSIDE TERMINAL
     const loadFirstData = () => {
-        if (firstStep === false) {
+        if (firstStep === true) {
             setTimeout(() => {
-                setFirstStep(true);
+                setFirstStep(false);
                 setSecondStep(true);
-            }, 2000);
+            }, 5000);
             return (
                 <div className="loaddiv">
-                    <p>$LOADING NECESSARY DATA... [RANDOM DATA://JOA/WEBDEV]</p>
-                    <p>$INITIALIZING JOA WEB DEVELOPER DATA...</p>
-                    <p>[INSTALLING...]</p>
+                    {terminalDataArray.map((data, index) => {
+                        return <p className={`delay-${index} loader`}>{data}</p>
+                    })}
                 </div>
             );
         }
     };
 
-    // CALLED INSIDE TERMINAL
     const loadSecondData = () => {
         if (secondStep === true) {
             setTimeout(() => {
@@ -58,7 +65,10 @@ const Terminal = (props) => {
     const renderTerminal = () => {
         if (props.terminalDisplay === true) {
             return (
-                <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
+                <Draggable
+                    handle="#handle"
+                    onMouseDown={(e) => props.onStart(e)}
+                >
                     <div className="terminal">
                         <header className="terminal-header" id="handle">
                             <p className="header-p">MINGW64:/c/Users/Guest</p>
