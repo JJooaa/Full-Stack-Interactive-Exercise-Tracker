@@ -83,7 +83,18 @@ span {
 
 .loader {
     animation-name: writeText;
-    animation-duration: 300ms;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    width: 0px;
+    margin: 0px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.loader1 {
+    animation-name: writeText2;
+    animation-duration: 1ms;
     animation-fill-mode: forwards;
     width: 0px;
     margin: 0px;
@@ -121,7 +132,16 @@ span {
 .delay-6 {
     animation-delay: 3000ms;
     color: yellow;
+}
+
+.delay-7 {
+    animation-delay: 4000ms;
     margin-top: 10px;
+}
+
+.delay-8 {
+    padding-top: 10px;
+    animation-delay: 4500ms;
 }
 
 @keyframes writeText {
@@ -132,3 +152,4 @@ span {
         width: 400px;
     }
 }
+

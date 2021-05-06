@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import "./Terminal.css";
 
 const Terminal = (props) => {
-    // OPENS TERMINAL, LOADS DATA
-    const [firstStep, setFirstStep] = useState(true);
-    // AFTER INSTALLATION IN TERMINAL
-    const [secondStep, setSecondStep] = useState(false);
-
+    const [loadProject, setLoadProject] = useState(false);
     const terminalDataArray = [
         "Loading packages from RANDOM DATA://JOA/WEBDEV",
         "Downloading [05 / 20]...",
@@ -15,55 +11,14 @@ const Terminal = (props) => {
         "Downloading [15 / 20]...",
         "Downloading [20 / 20]...",
         "Finished Downloading packages",
-        "COMPILING..."
+        "Compiling...",
+        "Compiled succesfully!",
+        "Launching Project in a new Window...",
     ];
 
-    // CALLED INSIDE TERMINAL
-    const loadFirstData = () => {
-        if (firstStep === true) {
-            setTimeout(() => {
-                setFirstStep(false);
-                setSecondStep(true);
-            }, 5000);
-            return (
-                <div className="loaddiv">
-                    {terminalDataArray.map((data, index) => {
-                        return <p className={`delay-${index} loader`}>{data}</p>
-                    })}
-                </div>
-            );
-        }
-    };
-
-    const loadSecondData = () => {
-        if (secondStep === true) {
-            setTimeout(() => {
-                props.setProjectDisplay(true);
-                props.setTerminalDisplay(false);
-                refreshTerminalState();
-            }, 2000);
-            return (
-                <div className="inputdiv">
-                    <p>
-                        <span>Compiled successfully!</span> Setup finished in
-                        [2500ms]...
-                    </p>
-                    <p>Loading project in a new window...</p>
-                    <p className="inline-block">$</p>
-                    <input spellCheck="false"></input>
-                </div>
-            );
-        }
-    };
-
-    // CALLED WHEN CLOSING TERMINAL
-    const refreshTerminalState = () => {
-        setFirstStep(false);
-        setSecondStep(false);
-    };
-
     const renderTerminal = () => {
-        if (props.terminalDisplay === true) {
+        console.log("asd")
+        if (props.terminalDisplay) {
             return (
                 <Draggable
                     handle="#handle"
@@ -75,10 +30,9 @@ const Terminal = (props) => {
                             <div className="flex">
                                 <div
                                     className="close-terminal"
-                                    onClick={() => {
-                                        props.setTerminalDisplay(false);
-                                        refreshTerminalState();
-                                    }}
+                                    onClick={() =>
+                                        props.setTerminalDisplay(false)
+                                    }
                                 >
                                     X
                                 </div>
@@ -89,10 +43,14 @@ const Terminal = (props) => {
                             <p className="quest-p">
                                 guest@DESKTOP-WEBDEV6 MINGW64 ~
                             </p>
-                            {/*STEP 1*/}
-                            {loadFirstData()}
-                            {/*STEP 2 */}
-                            {loadSecondData()}
+                            <br></br>
+                            {terminalDataArray.map((data, index) => {
+                                return (
+                                    <p className={`delay-${index} loader`}>
+                                        {data}
+                                    </p>
+                                );
+                            })}
                         </div>
                     </div>
                 </Draggable>

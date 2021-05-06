@@ -13,13 +13,14 @@
 
 .windows-explore {
     height: 100%;
-    width: 300px;
+    width: 100px;
     background-color: whitesmoke;
     display: flex;
     align-items: center;
     justify-content: center;
     border-right: 1px solid black;
     cursor: pointer;
+    padding-top: 1px;
 }
 
 .windows-explore:hover {
