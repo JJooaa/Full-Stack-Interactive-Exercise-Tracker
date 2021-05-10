@@ -1,6 +1,6 @@
 import React from "react";
 import "./Icon.css";
-import exe from "../Images/exe.png";
+import exe from "../../Images/exe.png";
 
 const ExeIcon = (props) => {
     return (

@@ -1,0 +1,76 @@
+.exercise-tracker {
+    height: 650px;
+    width: 1200px;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 8%;
+    right: 20%;
+    border: 1px solid black;
+}
+
+.exercise-header {
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+    box-sizing: border-box;
+}
+
+.e-header-p {
+    color: black;
+}
+.exercise-close {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+}
+.exercise-close:hover  {
+    background: red;
+}
+
+.exercises-content {
+    width: 100%;
+    height: 100%;
+    background-color: gainsboro;
+    display: flex;
+    padding: 0px 20px 0px 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exercises-holder {
+    width: 900px;
+    height: 600px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 0px 40px 0px; 
+}
+
+.exercise-editor {
+    height: 600px;
+    width: 240px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.exercise-item {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.form-input {
+    width: 200px;
+}

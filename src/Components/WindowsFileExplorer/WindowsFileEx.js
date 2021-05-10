@@ -5,6 +5,7 @@ import ExeIcon from "../Icons/ExeIcon";
 
 const WindowsFileEx = (props) => {
     const renderComponent = () => {
+        console.log("hello")
         if (props.displayWfe === true) {
             return (
                 <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>

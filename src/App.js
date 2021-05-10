@@ -6,6 +6,7 @@ import WindowsFileEx from "./Components/WindowsFileExplorer/WindowsFileEx";
 import WindowsFooter from "./Components/WindowsFooter/WindowsFooter";
 import ProjectWindow from "./Components/ProjectWindow/ProjectWindow";
 import StartWindow from "./Components/StartWindow/StartWindow";
+import ExerciseTracker from "./Components/ExerciseTracker/ExerciseTracker";
 import "./App.css";
 /* 
     ITSELLE MUISTIIN: TEE SILLEEN KUN PROJEKTIA KLIKKAA SE AVAA TERMINAALIN
@@ -66,8 +67,9 @@ const App = () => {
                     projectDisplay={projectDisplay}
                     onStart={onStart}
                 />
-                <WindowsFooter setStartWindow={setStartWindow}/>
-                <StartWindow startWindow={startWindow}/>
+                <ExerciseTracker onStart={onStart} />
+                <WindowsFooter setStartWindow={setStartWindow} />
+                <StartWindow startWindow={startWindow} />
             </div>
         </div>
     );

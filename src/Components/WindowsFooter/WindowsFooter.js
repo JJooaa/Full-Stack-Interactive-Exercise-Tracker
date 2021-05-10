@@ -1,6 +1,6 @@
 import React from "react";
 import "./WindowsFooter.css";
-import windowsIcon from "../Images/windows-icon.png";
+import windowsIcon from "../../Images/windows-icon.png";
 
 const WindowsFooter = (props) => {
     return (
