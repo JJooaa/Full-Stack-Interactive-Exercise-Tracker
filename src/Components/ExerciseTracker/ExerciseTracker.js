@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./ExerciseTracker.css";
 import Draggable from "react-draggable";
 import DatePicker from "react-datepicker";
@@ -25,24 +25,38 @@ const ExerciseTracker = (props) => {
                             <div className="exercise-item"></div>
                         </div>
                         <div className="exercise-editor">
-                            <form>
-                                <label>Nimi</label>
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                }}
+                            >
+                                <label>Name</label>
                                 <input
                                     className="form-input"
                                     type="text"
                                 ></input>
-                                <label>Lisätietoa</label>
+                                <label>Description</label>
                                 <input
                                     className="form-input"
                                     type="text"
                                 ></input>
-                                <label>Kesto</label>
+                                <label>Duration</label>
                                 <input
                                     className="form-input"
                                     type="text"
                                 ></input>
-                                <label>Päivämäärä</label>
-                                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                                <label>Date</label>
+                                <br />
+                                <DatePicker
+                                    className="form-input"
+                                    selected={startDate}
+                                    onChange={(date) => setStartDate(date)}
+                                />
+                                <input
+                                    className="form-input submit"
+                                    type="submit"
+                                    value="Add Exercise"
+                                ></input>
                             </form>
                         </div>
                     </div>
