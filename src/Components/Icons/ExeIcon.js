@@ -7,7 +7,7 @@ const ExeIcon = (props) => {
         <>
             <div className="exe-folder" onDoubleClick={() => props.setTerminalDisplay(true)}>
                 <img className="exeimage" src={exe} />
-                <p className="exe-p">Project.exe</p>
+                <p className="exe-p">Exercise-Tracker.exe</p>
             </div>
         </>
     )

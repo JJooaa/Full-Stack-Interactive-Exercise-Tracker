@@ -8,11 +8,12 @@ const ExerciseTracker = (props) => {
     const [startDate, setStartDate] = useState(new Date());
     return (
         <>
+        {props.exerciseTracker ? 
             <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
                 <div className="exercise-tracker">
                     <div className="exercise-header" id="handle">
                         <p className="e-header-p">Exercise Tracker</p>
-                        <p className="exercise-close">X</p>
+                        <p className="exercise-close" onClick={() => props.setExerciseTracker(false)}>X</p>
                     </div>
                     <div className="exercises-content">
                         <div className="exercises-holder">
@@ -47,6 +48,7 @@ const ExerciseTracker = (props) => {
                     </div>
                 </div>
             </Draggable>
+            : null}
         </>
     );
 };

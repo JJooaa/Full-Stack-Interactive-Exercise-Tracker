@@ -26,6 +26,8 @@ const App = () => {
     // Windows start window (in the footer)
     const [startWindow, setStartWindow] = useState(false);
 
+    const [exerciseTracker, setExerciseTracker] = useState(true);
+
     const onStart = (e) => {
         let elems = document.getElementsByClassName("react-draggable");
         for (let i = 0; i < elems.length; i++) {
@@ -67,7 +69,11 @@ const App = () => {
                     projectDisplay={projectDisplay}
                     onStart={onStart}
                 />
-                <ExerciseTracker onStart={onStart} />
+                <ExerciseTracker
+                    onStart={onStart}
+                    exerciseTracker={exerciseTracker}
+                    setExerciseTracker={setExerciseTracker}
+                />
                 <WindowsFooter setStartWindow={setStartWindow} />
                 <StartWindow startWindow={startWindow} />
             </div>
