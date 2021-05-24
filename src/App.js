@@ -4,7 +4,6 @@ import Terminal from "./Components/Terminal/Terminal";
 import FolderIcon from "./Components/Icons/FolderIcon";
 import WindowsFileEx from "./Components/WindowsFileExplorer/WindowsFileEx";
 import WindowsFooter from "./Components/WindowsFooter/WindowsFooter";
-import ProjectWindow from "./Components/ProjectWindow/ProjectWindow";
 import StartWindow from "./Components/StartWindow/StartWindow";
 import ExerciseTracker from "./Components/ExerciseTracker/ExerciseTracker";
 import "./App.css";
@@ -26,7 +25,7 @@ const App = () => {
     // Windows start window (in the footer)
     const [startWindow, setStartWindow] = useState(false);
 
-    const [exerciseTracker, setExerciseTracker] = useState(true);
+    const [exerciseTracker, setExerciseTracker] = useState(false);
 
     const onStart = (e) => {
         let elems = document.getElementsByClassName("react-draggable");
@@ -52,28 +51,31 @@ const App = () => {
         <div className="App">
             <div className="main">
                 <FolderIcon setDisplayWfe={setDisplayWfe} />
-                <Terminal
-                    terminalDisplay={terminalDisplay}
-                    setTerminalDisplay={setTerminalDisplay}
-                    setProjectDisplay={setProjectDisplay}
-                    onStart={onStart}
-                />
-                <WindowsFileEx
-                    setDisplayWfe={setDisplayWfe}
-                    displayWfe={displayWfe}
-                    setTerminalDisplay={setTerminalDisplay}
-                    onStart={onStart}
-                />
-                <ProjectWindow
-                    setProjectDisplay={setProjectDisplay}
-                    projectDisplay={projectDisplay}
-                    onStart={onStart}
-                />
-                <ExerciseTracker
-                    onStart={onStart}
-                    exerciseTracker={exerciseTracker}
-                    setExerciseTracker={setExerciseTracker}
-                />
+                {terminalDisplay ? (
+                    <Terminal
+                        terminalDisplay={terminalDisplay}
+                        setTerminalDisplay={setTerminalDisplay}
+                        setProjectDisplay={setProjectDisplay}
+                        onStart={onStart}
+                        exerciseTracker={exerciseTracker}
+                        setExerciseTracker={setExerciseTracker}
+                    />
+                ) : null}
+                {displayWfe ? (
+                    <WindowsFileEx
+                        setDisplayWfe={setDisplayWfe}
+                        displayWfe={displayWfe}
+                        setTerminalDisplay={setTerminalDisplay}
+                        onStart={onStart}
+                    />
+                ) : null}
+                {exerciseTracker ? (
+                    <ExerciseTracker
+                        onStart={onStart}
+                        exerciseTracker={exerciseTracker}
+                        setExerciseTracker={setExerciseTracker}
+                    />
+                ) : null}
                 <WindowsFooter setStartWindow={setStartWindow} />
                 <StartWindow startWindow={startWindow} />
             </div>

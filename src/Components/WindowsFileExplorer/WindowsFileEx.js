@@ -4,11 +4,13 @@ import Draggable from "react-draggable";
 import ExeIcon from "../Icons/ExeIcon";
 
 const WindowsFileEx = (props) => {
-    const renderComponent = () => {
-        console.log("hello")
-        if (props.displayWfe === true) {
-            return (
-                <Draggable handle="#handle" onMouseDown={(e) => props.onStart(e)}>
+    return (
+        <>
+            {props.displayWfe ? (
+                <Draggable
+                    handle="#handle"
+                    onMouseDown={(e) => props.onStart(e)}
+                >
                     <div className="wfe-container">
                         <header className="wfe-header" id="handle">
                             <p className="wfe-p">File Explorer</p>
@@ -38,11 +40,9 @@ const WindowsFileEx = (props) => {
                         </div>
                     </div>
                 </Draggable>
-            );
-        }
-    };
-
-    return <>{renderComponent()}</>;
+            ) : null}
+        </>
+    );
 };
 
 export default WindowsFileEx;

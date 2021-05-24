@@ -3,23 +3,30 @@ import Draggable from "react-draggable";
 import "./Terminal.css";
 
 const Terminal = (props) => {
-    const [loadProject, setLoadProject] = useState(false);
     const terminalDataArray = [
         "Loading packages from RANDOM DATA://JOA/WEBDEV",
         "Downloading [05 / 20]...",
         "Downloading [10 / 20]...",
         "Downloading [15 / 20]...",
+        "Downloading [19 / 20]...",
         "Downloading [20 / 20]...",
         "Finished Downloading packages",
         "Compiling...",
         "Compiled succesfully!",
-        "Launching Project in a new Window...",
+        "Launching Exercise Tracker...",
     ];
 
-    const renderTerminal = () => {
-        console.log("asd")
-        if (props.terminalDisplay) {
-            return (
+    useEffect(() => {
+        console.log("useeffect")
+        setTimeout(() => {
+            props.setExerciseTracker(true);
+            props.setTerminalDisplay(false);
+        }, 6500);
+    }, []);
+
+    return (
+        <>
+            {props.terminalDisplay ? (
                 <Draggable
                     handle="#handle"
                     onMouseDown={(e) => props.onStart(e)}
@@ -54,11 +61,9 @@ const Terminal = (props) => {
                         </div>
                     </div>
                 </Draggable>
-            );
-        }
-    };
-
-    return <>{renderTerminal()}</>;
+            ) : null}
+        </>
+    );
 };
 
 export default Terminal;
