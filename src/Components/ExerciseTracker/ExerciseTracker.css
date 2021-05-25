@@ -79,6 +79,22 @@
     background-color: white;
 }
 
+.exercise-item p {
+    color: black;
+}
+
+h2 {
+    color: black;
+}
+
+.white {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    color: white;
+}
+
 .form-input {
     width: 200px;
     display: block;

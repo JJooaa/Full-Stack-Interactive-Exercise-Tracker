@@ -21,7 +21,7 @@ const Terminal = (props) => {
         setTimeout(() => {
             props.setExerciseTracker(true);
             props.setTerminalDisplay(false);
-        }, 6500);
+        }, 5500);
     }, []);
 
     return (

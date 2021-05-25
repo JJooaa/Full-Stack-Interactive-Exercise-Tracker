@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Draggable from "react-draggable";
+import React, { useState } from "react";
 import Terminal from "./Components/Terminal/Terminal";
 import FolderIcon from "./Components/Icons/FolderIcon";
 import WindowsFileEx from "./Components/WindowsFileExplorer/WindowsFileEx";
 import WindowsFooter from "./Components/WindowsFooter/WindowsFooter";
 import StartWindow from "./Components/StartWindow/StartWindow";
 import ExerciseTracker from "./Components/ExerciseTracker/ExerciseTracker";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
-/* 
-    ITSELLE MUISTIIN: TEE SILLEEN KUN PROJEKTIA KLIKKAA SE AVAA TERMINAALIN
-    JA SIINÄ TEKSTIÄ VAAN RULLAA SILLEEN COOLISTI. SITTEN NÄYTTÖ JOTENKIN GLITCHAA
-    SIT SIIN PYÖRII JOTAIN VÄLÄYKSIÄ JOSTAIN IHME "KOODARI" JUTUISTA JA SITTEN 
-    SE AVAA MUN PROJEKTIN JOTENKIN IHMEELLISESTI
-*/
+
+const queryClient = new QueryClient();
+
 const App = () => {
     // LOADING SCREEN
     const [isLoading, setIsLoading] = useState(true);
@@ -20,8 +18,6 @@ const App = () => {
     const [displayWfe, setDisplayWfe] = useState(false);
     // Terminal
     const [terminalDisplay, setTerminalDisplay] = useState(false);
-    // Project Container Display
-    const [projectDisplay, setProjectDisplay] = useState(false);
     // Windows start window (in the footer)
     const [startWindow, setStartWindow] = useState(false);
 
@@ -48,38 +44,40 @@ const App = () => {
     }
 
     return (
-        <div className="App">
-            <div className="main">
-                <FolderIcon setDisplayWfe={setDisplayWfe} />
-                {terminalDisplay ? (
-                    <Terminal
-                        terminalDisplay={terminalDisplay}
-                        setTerminalDisplay={setTerminalDisplay}
-                        setProjectDisplay={setProjectDisplay}
-                        onStart={onStart}
-                        exerciseTracker={exerciseTracker}
-                        setExerciseTracker={setExerciseTracker}
-                    />
-                ) : null}
-                {displayWfe ? (
-                    <WindowsFileEx
-                        setDisplayWfe={setDisplayWfe}
-                        displayWfe={displayWfe}
-                        setTerminalDisplay={setTerminalDisplay}
-                        onStart={onStart}
-                    />
-                ) : null}
-                {exerciseTracker ? (
-                    <ExerciseTracker
-                        onStart={onStart}
-                        exerciseTracker={exerciseTracker}
-                        setExerciseTracker={setExerciseTracker}
-                    />
-                ) : null}
-                <WindowsFooter setStartWindow={setStartWindow} />
-                <StartWindow startWindow={startWindow} />
+        <QueryClientProvider client={queryClient}>
+            <div className="App">
+                <div className="main">
+                    <FolderIcon setDisplayWfe={setDisplayWfe} />
+                    {terminalDisplay ? (
+                        <Terminal
+                            terminalDisplay={terminalDisplay}
+                            setTerminalDisplay={setTerminalDisplay}
+                            onStart={onStart}
+                            exerciseTracker={exerciseTracker}
+                            setExerciseTracker={setExerciseTracker}
+                        />
+                    ) : null}
+                    {displayWfe ? (
+                        <WindowsFileEx
+                            setDisplayWfe={setDisplayWfe}
+                            displayWfe={displayWfe}
+                            setTerminalDisplay={setTerminalDisplay}
+                            onStart={onStart}
+                        />
+                    ) : null}
+                    {exerciseTracker ? (
+                        <ExerciseTracker
+                            onStart={onStart}
+                            exerciseTracker={exerciseTracker}
+                            setExerciseTracker={setExerciseTracker}
+                        />
+                    ) : null}
+                    <WindowsFooter setStartWindow={setStartWindow} />
+                    <StartWindow startWindow={startWindow} />
+                </div>
             </div>
-        </div>
+            <ReactQueryDevtools initialIsOpen={false}/>
+        </QueryClientProvider>
     );
 };
 
