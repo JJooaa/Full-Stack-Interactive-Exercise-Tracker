@@ -47,7 +47,7 @@
     justify-content: space-between;
 }
 
-.exercises-holder {
+.exercises-inner {
     width: 900px;
     height: 650px;
     box-sizing: border-box;

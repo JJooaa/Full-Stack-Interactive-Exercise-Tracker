@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Draggable from "react-draggable";
 import "./Terminal.css";
 
-const Terminal = (props) => {
+const Terminal = ({
+    setExerciseTracker,
+    setTerminalDisplay,
+    onStart,
+    terminalDisplay,
+}) => {
     const terminalDataArray = [
         "Loading packages from RANDOM DATA://JOA/WEBDEV",
         "Downloading [05 / 20]...",
@@ -17,29 +22,23 @@ const Terminal = (props) => {
     ];
 
     useEffect(() => {
-        console.log("useeffect")
         setTimeout(() => {
-            props.setExerciseTracker(true);
-            props.setTerminalDisplay(false);
+            setExerciseTracker(true);
+            setTerminalDisplay(false);
         }, 5500);
-    }, []);
+    }, [setTerminalDisplay, setExerciseTracker]);
 
     return (
         <>
-            {props.terminalDisplay ? (
-                <Draggable
-                    handle="#handle"
-                    onMouseDown={(e) => props.onStart(e)}
-                >
+            {terminalDisplay ? (
+                <Draggable handle="#handle" onMouseDown={(e) => onStart(e)}>
                     <div className="terminal">
                         <header className="terminal-header" id="handle">
                             <p className="header-p">MINGW64:/c/Users/Guest</p>
                             <div className="flex">
                                 <div
                                     className="close-terminal"
-                                    onClick={() =>
-                                        props.setTerminalDisplay(false)
-                                    }
+                                    onClick={() => setTerminalDisplay(false)}
                                 >
                                     X
                                 </div>
@@ -53,7 +52,7 @@ const Terminal = (props) => {
                             <br></br>
                             {terminalDataArray.map((data, index) => {
                                 return (
-                                    <p className={`delay-${index} loader`}>
+                                    <p key={index}className={`delay-${index} loader`}>
                                         {data}
                                     </p>
                                 );

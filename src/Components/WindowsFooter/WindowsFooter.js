@@ -7,7 +7,7 @@ const WindowsFooter = (props) => {
         <>
             <div className="footer">
                 <div className="windows-explore" onClick={() => props.setStartWindow(true)}>
-                    <img className="logo" src={windowsIcon} />
+                    <img className="logo" alt="start" src={windowsIcon} />
                 </div>
             </div>
         </>

@@ -3,43 +3,40 @@ import "./ExerciseTracker.css";
 import Draggable from "react-draggable";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
-import {
-    useQuery,
-    useMutation,
-    useQueryClient,
-    QueryClient,
-    QueryClientProvider,
-} from "react-query";
-
-const object = {
-    username: "joa",
-    description: "uinti",
-    duration: "30",
-    date: "2021-03-24T01:00:00.000+00:00",
-};
-
-const deleteExercise = (id) => {
-    axios
-        .delete(`http://localhost:5000/exercises/${id}`)
-        .then((response) => console.log(response.data));
-};
-
-const postExercise = (exercise) => {
-    axios
-        .post("http://localhost:5000/exercises/add", exercise)
-        .catch((error) => console.log(error));
-};
-
-const fetchExercises = async () => {
-    const res = await axios.get("http://localhost:5000/exercises/");
-    console.log("hey")
-    return res.data;
-};
+import { fetchExercises, deleteExercise, postExercise } from "../../Util/Api";
+import { useQuery, useMutation } from "react-query";
 
 const ExerciseTracker = (props) => {
     const [startDate, setStartDate] = useState(new Date());
-    const { data, status } = useQuery("exercises", fetchExercises);
+    const [exercise, setExercise] = useState({
+        username: "",
+        description: "",
+        duration: "",
+        date: "",
+    });
+    const { data, status, refetch } = useQuery("exercises", fetchExercises);
+
+    // 2021-03-24T01:00:00.000+00:00
+
+    const mutation = useMutation((exercise) => postExercise(exercise), {
+        onSuccess: () => {
+            refetch();
+        },
+    });
+
+    const mutation1 = useMutation((id) => deleteExercise(id), {
+        onSuccess: () => {
+            refetch();
+        },
+    });
+
+    const handleChange = (e) => {
+        setExercise((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
     return (
         <>
             {props.exerciseTracker ? (
@@ -58,21 +55,37 @@ const ExerciseTracker = (props) => {
                             </p>
                         </div>
                         <div className="exercises-content">
-                            {status === "loading" ? <p>Loading...</p> : null}
-                            <div className="exercises-holder">
-                                {status === "loading" ? <p>Loading...</p> : data.map((item, index) => {
-                                    return (
-                                        <div
-                                            className="exercise-item"
-                                            key={index}
-                                        >
-                                            <p>{item.username}</p>
-                                            <p>{item.description}</p>
-                                            <p>{item.duration}</p>
-                                            <p>{item.date}</p>
-                                        </div>
-                                    );
-                                })}
+                            <div className="exercises-inner">
+                                {status === "loading" &&
+                                status !== "success" ? (
+                                    <p className="exercise-item-p">
+                                        Loading...
+                                    </p>
+                                ) : (
+                                    data.map((item, index) => {
+                                        return (
+                                            <div
+                                                className="exercise-item"
+                                                key={index}
+                                            >
+                                                <p>{item.username}</p>
+                                                <p>{item.description}</p>
+                                                <p>{item.duration}</p>
+                                                <p>{item.date}</p>
+                                                <button
+                                                    id={item._id}
+                                                    onClick={(e) =>
+                                                        mutation1.mutate(
+                                                            e.target.id
+                                                        )
+                                                    }
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        );
+                                    })
+                                )}
                             </div>
                             <div className="exercise-editor">
                                 <form
@@ -84,16 +97,25 @@ const ExerciseTracker = (props) => {
                                     <input
                                         className="form-input"
                                         type="text"
+                                        name="username"
+                                        value={exercise.username}
+                                        onChange={handleChange}
                                     ></input>
                                     <label>Description</label>
                                     <input
                                         className="form-input"
                                         type="text"
+                                        value={exercise.description}
+                                        name="description"
+                                        onChange={handleChange}
                                     ></input>
                                     <label>Duration</label>
                                     <input
                                         className="form-input"
+                                        value={exercise.duration}
                                         type="text"
+                                        name="duration"
+                                        onChange={handleChange}
                                     ></input>
                                     <label>Date</label>
                                     <br />
@@ -108,6 +130,11 @@ const ExerciseTracker = (props) => {
                                         value="Add Exercise"
                                     ></input>
                                 </form>
+                                <button
+                                    onClick={() => mutation.mutate(exercise)}
+                                >
+                                    ADD
+                                </button>
                             </div>
                         </div>
                     </div>

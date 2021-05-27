@@ -11,7 +11,7 @@ const FolderIcon = (props) => {
                     className="folder1"
                     onDoubleClick={() => props.setDisplayWfe(true)}
                 >
-                    <img className="folderimage" src={folderImg} />
+                    <img className="folderimage" alt="folder" src={folderImg} />
                     <p className="folder-p">Start</p>
                 </div>
             </Draggable>
