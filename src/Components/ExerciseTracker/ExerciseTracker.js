@@ -12,19 +12,18 @@ const ExerciseTracker = (props) => {
         username: "",
         description: "",
         duration: "",
-        date: "",
+        date: `${startDate}`,
     });
+
     const { data, status, refetch } = useQuery("exercises", fetchExercises);
 
-    // 2021-03-24T01:00:00.000+00:00
-
-    const mutation = useMutation((exercise) => postExercise(exercise), {
+    const addMutation = useMutation((exercise) => postExercise(exercise), {
         onSuccess: () => {
             refetch();
         },
     });
 
-    const mutation1 = useMutation((id) => deleteExercise(id), {
+    const deleteMutation = useMutation((id) => deleteExercise(id), {
         onSuccess: () => {
             refetch();
         },
@@ -35,6 +34,10 @@ const ExerciseTracker = (props) => {
             ...prev,
             [e.target.name]: e.target.value,
         }));
+    };
+
+    const onDateChange = (date) => {
+        setExercise({ ...exercise, date: date });
     };
 
     return (
@@ -68,14 +71,14 @@ const ExerciseTracker = (props) => {
                                                 className="exercise-item"
                                                 key={index}
                                             >
-                                                <p>{item.username}</p>
-                                                <p>{item.description}</p>
-                                                <p>{item.duration}</p>
-                                                <p>{item.date}</p>
+                                                <p className="item-p">{item.username}</p>
+                                                <p className="item-p">{item.description}</p>
+                                                <p className="item-p">{item.duration}</p>
+                                                <p className="item-p">{item.date}</p>
                                                 <button
                                                     id={item._id}
                                                     onClick={(e) =>
-                                                        mutation1.mutate(
+                                                        deleteMutation.mutate(
                                                             e.target.id
                                                         )
                                                     }
@@ -91,6 +94,7 @@ const ExerciseTracker = (props) => {
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault();
+                                        addMutation.mutate(exercise);
                                     }}
                                 >
                                     <label>Name</label>
@@ -122,7 +126,8 @@ const ExerciseTracker = (props) => {
                                     <DatePicker
                                         className="form-input"
                                         selected={startDate}
-                                        onChange={(date) => setStartDate(date)}
+                                        onSelect={(date) => setStartDate(date)}
+                                        onChange={onDateChange}
                                     />
                                     <input
                                         className="form-input submit"
@@ -130,11 +135,6 @@ const ExerciseTracker = (props) => {
                                         value="Add Exercise"
                                     ></input>
                                 </form>
-                                <button
-                                    onClick={() => mutation.mutate(exercise)}
-                                >
-                                    ADD
-                                </button>
                             </div>
                         </div>
                     </div>
