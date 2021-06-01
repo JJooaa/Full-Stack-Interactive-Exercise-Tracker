@@ -40,6 +40,15 @@ const ExerciseTracker = (props) => {
         setExercise({ ...exercise, date: date });
     };
 
+    const formatDate = (item) => {
+        let date = item.date;
+        let dd = date.slice(8, 10);
+        let mm = date.slice(5, 7);
+        let yyyy = date.slice(0, 4);
+        let formattedDate = `${dd}.${mm}.${yyyy}`;
+        return formattedDate;
+    };
+
     return (
         <>
             {props.exerciseTracker ? (
@@ -71,11 +80,20 @@ const ExerciseTracker = (props) => {
                                                 className="exercise-item"
                                                 key={index}
                                             >
-                                                <p className="item-p">{item.username}</p>
-                                                <p className="item-p">{item.description}</p>
-                                                <p className="item-p">{item.duration}</p>
-                                                <p className="item-p">{item.date}</p>
+                                                <p className="item-p">
+                                                    {item.username}
+                                                </p>
+                                                <p className="item-p">
+                                                    {item.description}
+                                                </p>
+                                                <p className="item-p">
+                                                    {item.duration} Min
+                                                </p>
+                                                <p className="item-p">
+                                                    {formatDate(item)}
+                                                </p>
                                                 <button
+                                                    className="remove-button"
                                                     id={item._id}
                                                     onClick={(e) =>
                                                         deleteMutation.mutate(
@@ -91,6 +109,7 @@ const ExerciseTracker = (props) => {
                                 )}
                             </div>
                             <div className="exercise-editor">
+                                <p className="exep-p">You can keep track of exercises. <br/>Add Exercise by filling the form information.</p>
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault();
@@ -117,7 +136,7 @@ const ExerciseTracker = (props) => {
                                     <input
                                         className="form-input"
                                         value={exercise.duration}
-                                        type="text"
+                                        type="number"
                                         name="duration"
                                         onChange={handleChange}
                                     ></input>

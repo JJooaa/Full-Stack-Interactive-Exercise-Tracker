@@ -39,12 +39,12 @@
 .exercises-content {
     width: 100%;
     height: 100%;
-    background-color: gainsboro;
     display: flex;
     padding: 0px 20px 0px 20px;
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
+    background-color: white;
 }
 
 .exercises-inner {
@@ -62,27 +62,62 @@
     height: 100%;
     min-width: 250px;
     box-sizing: border-box;
-    background-color: grey;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
 }
 
+.exep-p {
+    margin-top: 30px;
+    color: black;
+    text-align: center;
+}
+
 .submit {
     margin-top: 20px;
+    font-size: 22px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: lightseagreen;
 }
 .exercise-item {
     width: 250px;
     height: 250px;
     border: 1px solid black;
     background-color: white;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 10px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .item-p {
     color: black;
-    font-size: 26px;
+    font-size: 22px;
+    text-align: center;
+    width: 100%;
+    margin: 5px 0px 5px 0px;
+}
+
+.remove-button {
+    width: 50%;
+    text-decoration: none;
+    border: none;
+    height: 10%;
+    background-color: rgb(214, 157, 157);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.remove-button:hover {
+    background-color: red;
 }
 
 
@@ -97,6 +132,9 @@ h2 {
     left: 50%;
     right: 50%;
     color: white;
+}
+form {
+    margin-top: 35px;
 }
 
 .form-input {
