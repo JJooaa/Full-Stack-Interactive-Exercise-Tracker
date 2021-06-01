@@ -5,7 +5,7 @@ import WindowsFileEx from "./Components/WindowsFileExplorer/WindowsFileEx";
 import WindowsFooter from "./Components/WindowsFooter/WindowsFooter";
 import StartWindow from "./Components/StartWindow/StartWindow";
 import ExerciseTracker from "./Components/ExerciseTracker/ExerciseTracker";
-//import { ReactQueryDevtools } from "react-query/devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
 
@@ -73,9 +73,10 @@ const App = () => {
                         />
                     ) : null}
                     <WindowsFooter setStartWindow={setStartWindow} />
-                    <StartWindow startWindow={startWindow} />
+                    {/*<StartWindow startWindow={startWindow} />*/}
                 </div>
             </div>
+            <ReactQueryDevtools />
         </QueryClientProvider>
     );
 };
