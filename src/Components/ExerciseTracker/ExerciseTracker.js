@@ -109,7 +109,11 @@ const ExerciseTracker = (props) => {
                                 )}
                             </div>
                             <div className="exercise-editor">
-                                <p className="exep-p">You can keep track of exercises. <br/>Add Exercise by filling the form information.</p>
+                                <p className="exep-p">
+                                    You can keep track of exercises. <br />
+                                    Add Exercise by filling the form
+                                    information.
+                                </p>
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault();
